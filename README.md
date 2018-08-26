@@ -1,4 +1,4 @@
-# Not Fancy 
+# Not Fancy Countdown Timer
 
 A simple, not fancy at all, Countdown Timer.
 
@@ -20,7 +20,7 @@ Or see it live! [here](https://samanthaming.github.io/not-fancy-countdown-timer/
 
 <br>
 
-![App](images/not-fancy-clock.png)
+![App](images/not-fancy-countdown-timer.png)
 
 # Notes
 
@@ -34,11 +34,11 @@ We will use the Date object to get the current time. Then, we will use `setInter
 methods: {
   timer(seconds)  {
     const now = Date.now(); // this will be in milliseconds
-    // We need to convert our seconds into milliseconds
+    // 1. We need to convert our seconds into milliseconds
     const end = now + (seconds * 1000);
     
     setInterval(() => {
-      // We will convert it back to seconds and take their rounded value
+      // 2. We will convert it back to seconds and take their rounded value
       const secondsLeft = Math.round((end - Date.now()) / 1000);
       
       // ex. This will be 9,8,7,6...etc
@@ -48,12 +48,12 @@ methods: {
 }
 ```
 
-## 2. Stop Countdown after 0
+## 2. Stop Countdown
 
 The countdown will continue into the negative numbers. So we want to end the timer. To do this, we need to store the interval in a variable, so we can clear it. Let's refactor our code a bit.
 
 ```javascript
-// I'm putting it outside the vue object because I need
+// 1. I'm putting it outside the vue object because I need
 //  to access it in multiple methods
 var intervalTimer;
 
@@ -61,7 +61,7 @@ methods: {
   timer(seconds = 10) {
     // ...
     
-    // 1. We will pull out or interval and put it into a method instead
+    // 2. We will pull out or interval and put it into a method instead
     this.countDown(end);
   },
   countdown(end) {
@@ -69,7 +69,7 @@ methods: {
       const secondsLeft = Math.round((end - Date.now()) / 1000);
       
       if(secondsLeft <= 0) {
-        // 2. Now we can cancel it
+        // 3. Now we can cancel it
         clearInterval(intervalTimer);
         return;
       }
@@ -88,23 +88,26 @@ data: {
 },
 methods: {
   timer(seconds) {
-    // Because our setInterval kicks in after 1 sec
+    // 1. Because our setInterval kicks in after 1 sec
     //  we'll set the initial display time as the selected seconds
     this.displayTimeLeft(seconds);
     
-    // Trigger out countdown
+    // 2. Trigger out countdown
     this.countdown(end);
   },
   countdown(end) {
     intervalTimer = setInterval(() => {
       // ...
+      
+      // 3. Update the time after every 1 sec
       this.displayTimeLeft(secondsLeft)
     }, 1000);
   },
   displayTimeLeft(secondsLeft) {
     const minutes = Math.floor((secondsLeft % 3600) / 60);
     const seconds = secondsLeft % 60;
-
+  
+    // 4. Store the time in our data variable
     this.timeLeft = `${minutes}:${seconds}`;
   },
 }
