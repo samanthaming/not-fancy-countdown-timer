@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Sarpanch" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+  <title>Hello</title>
+</head>
+<body>
+  <!-- app -->
+  <div id="app">
+    <div class="outer-container">
+      <div class="inner-container">
+        <h1>Not Fancy Countdown Timer</h1>
+        <div class="countdown">
+          <h2>
+            {{ timeLeft }}
+          </h2>
+          <h3>Countdown ends at <span>{{ endTime }}</span></h3>
+        </div>
+
+        <ul class="columns is-mobile is-centered">
+          <li v-for="(time, index) in times"
+            :key="index"
+            class="column time"
+          >
+            <a v-on:click.prevent="setTime(time.sec)"
+              :class="[
+                'button',
+                'is-link',
+                {'is-active': time.sec === selectedTime && endTime !== 0 }
+              ]">
+              {{ time.display }}
+            </a>
+          </li>
+        </ul>
+
+        <!-- Social Media Footer -->
+        <div class="social-media-footer">
+          <div class="columns is-mobile social-columns">
+            <div class="column">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+              <a href="https://twitter.com/samantha_ming" target="_blank">samantha_ming</a>
+            </div>
+            <div class="column">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+              <a href="https://www.facebook.com/hisamanthaming" target="_blank">hi.samanthaming</a>
+            </div>
+            <div class="column">
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+              <a href="https://www.instagram.com/samanthaming/" target="_blank">samanthaming</a>
+            </div>
+          </div>
+        </div><!--end social media-->
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="vue.js"></script>
+</body>
+</html>
