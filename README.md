@@ -133,7 +133,7 @@ methods: {
 
 The Date object is used to work with dates and times. Date objects are created with the new Date() constructor. There are 4 ways to instantiate a date. In other words, 4 ways to create a new date object.
 
-### A. No arguments
+### 1. No arguments
 
 Without any argument, you will get the current milliseconds since Jan 1, 1970 UTC.
 
@@ -145,7 +145,7 @@ new Date();
 
 This means that we are **1534800780519** milliseconds past January 1, 1970.
 
-### B. Argument: milliseconds
+### 2. Argument: milliseconds
 
 You can pass in milliseconds as the argument, it will return a date object.
 
@@ -155,7 +155,7 @@ new Date(1534800780519)
 // Mon Aug 20 2018 14:33:00 GMT-0700 (Pacific Daylight Time)
 ```
 
-### C. Arguments: date string
+### 3. Argument: date string
 
 You can also create a date object by passing a string
 
@@ -172,7 +172,7 @@ new Date('30 Aug 2018');
 new Date('August 20 2018');
 ```
 
-### D: Arguments: Date Components
+### 4: Argument: Date Components
 
 ```javascript
 /* 
